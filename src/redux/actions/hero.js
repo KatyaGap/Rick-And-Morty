@@ -30,7 +30,6 @@ export const getFilteredThunk = (data) => async (dispatch) => {
     const response = await fetch(path);
     if (response.ok) {
       const res = await response.json();
-			console.log('res', res)
       dispatch(getFiltered(res));
     }
   } catch (error) {

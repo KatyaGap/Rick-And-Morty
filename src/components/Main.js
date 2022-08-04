@@ -16,10 +16,8 @@ function Main() {
   const [filter, setFilter] = useState({});
 
   useEffect(() => {
-    if (load && Object.keys(filter).length === 1 && Object.keys(filter)[0] === 'name') {
+    if (load) {
       dispatch(getFilteredThunk({ page, filter }));
-		} else if (load) {
-			dispatch(getFilteredThunk({ page, filter }));
       setload(false);
       if (page < filtered.info.pages) {
         setpage((prev) => prev + 1);

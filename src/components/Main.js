@@ -16,14 +16,17 @@ function Main() {
   const [filter, setFilter] = useState({});
 
   useEffect(() => {
-    if (load) {
+    if (load && Object.keys(filter).length === 1 && Object.keys(filter)[0] === 'name') {
       dispatch(getFilteredThunk({ page, filter }));
+		} else if (load) {
+			dispatch(getFilteredThunk({ page, filter }));
       setload(false);
       if (page < filtered.info.pages) {
         setpage((prev) => prev + 1);
       }
     }
   }, [load, filter]);
+	
 
   function scrollhandler(e) {
     if (e.target.documentElement.scrollHeight
